@@ -6,6 +6,27 @@ export const environment = {
   production: false
 };
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCqCL5PjXJaBdRPQwVB1JRg1xNmj1--04U",
+  authDomain: "fir-723b8.firebaseapp.com",
+  projectId: "fir-723b8",
+  storageBucket: "fir-723b8.appspot.com",
+  messagingSenderId: "964122329039",
+  appId: "1:964122329039:web:14aaf5441badccfd371cba",
+  measurementId: "G-5RHSE9VC7D"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
