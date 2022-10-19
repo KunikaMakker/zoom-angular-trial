@@ -9,15 +9,26 @@ import zoomSdk from "@zoom/appssdk"
 
 export class AppComponent {
   title = 'zoom-angular-trial';
+  value = "";
   constructor() {}
 
   ngOnInit() {}
   
   async configureApp() {
-    const configResponse = await zoomSdk.config({
-      popoutSize: {width: 480, height: 360},
-      capabilities: ["shareApp"]
-    })
+    try {
+      const configResponse = await zoomSdk.config({
+          size: { width: 480, height: 360 },
+          capabilities: [
+              /* Add Capabilities Here */
+              'shareApp',
+          ],
+      });
+      this.value="response"
+      console.debug('Zoom JS SDK Configuration', configResponse);
+    } catch (e) {
+      this.value="error"
+        console.error(e);
+    }
   }
 
   getSignature() {
