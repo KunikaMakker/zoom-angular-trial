@@ -10,6 +10,10 @@
     <br/>
     <button (click)="getUserDetails()">User Details</button>
      userDetails {{userDetails.length}}
-    <div *ngFor="let x of userDetails | keyvalue">{{x.key}}->{{x.value}}</div>
+    <div *ngFor="let x of userDetails | keyvalue">{{x.key}}->{{x.value}}</div><br/>
+    -----------------------------------------------------------------------------------<br/>
+    <button (click)="getMeetingDetails()">Meeting Details</button>
+    meetingDetails {{meetingDetails.length}}
+    <div *ngFor="let x of meetingDetails | keyvalue">{{x.key}}->{{x.value}}</div>
 </div>
   

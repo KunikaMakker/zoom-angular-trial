@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'zoom-angular-trial';
   value: any = "";
   userDetails: any = "";
+  meetingDetails: any = "";
   // currencies = { code: 'ALL', name: 'Albanian lek', symbol: 'L' }
   constructor() {}
 
@@ -23,11 +24,14 @@ export class AppComponent {
           capabilities: [
               /* Add Capabilities Here */
               'shareApp',
+              "getMeetingContext",
+              "getUserContext",
           ],
       });
       this.value=configResponse
       console.debug('Zoom JS SDK Configuration', configResponse);
       
+      this.getMeetingDetails();
       this.getUserDetails();
     } catch (e) {
       this.value="error"
@@ -50,5 +54,9 @@ export class AppComponent {
       console.log(error);
       // there was an error
     })  
+  }
+  async getMeetingDetails() {
+    const meeting = await zoomSdk.getMeetingContext();
+    this.meetingDetails = meeting;
   }
 }
