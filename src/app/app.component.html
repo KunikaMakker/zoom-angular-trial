@@ -6,6 +6,7 @@
     <br/> -->
     <button (click)="getSignature()">Join Meeting</button>
     <div *ngFor="let x of value | keyvalue">{{x.key}}->{{x.value}}</div>
-    {{value}}
+    <button (click)="getUserDetails()">User Details</button>
+    <div *ngFor="let x of userDetails | keyvalue">{{x.key}}->{{x.value}}</div>
 </div>
   

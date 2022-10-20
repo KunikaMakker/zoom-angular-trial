@@ -10,7 +10,8 @@ import zoomSdk from "@zoom/appssdk"
 export class AppComponent {
   title = 'zoom-angular-trial';
   value: any = "";
-  currencies = { code: 'ALL', name: 'Albanian lek', symbol: 'L' }
+  userDetails: any = "";
+  // currencies = { code: 'ALL', name: 'Albanian lek', symbol: 'L' }
   constructor() {}
 
   ngOnInit() {}
@@ -38,32 +39,14 @@ export class AppComponent {
     // this.startMeeting(this.signature);
   }
 
-  // startMeeting(signature: string) {
-  //   // document.getElementById("zmmtg-root").style.display = "block";
-
-  //   ZoomMtg.init({
-  //     leaveUrl: this.leaveUrl,
-  //     isSupportAV: true,
-  //     success: (success: any) => {
-  //       console.log(success);
-
-  //       ZoomMtg.join({
-  //         signature: signature,
-  //         meetingNumber: this.meetingNumber,
-  //         userName: this.userName,
-  //         userEmail: this.userEmail,
-  //         passWord: this.passWord,
-  //         success: (success: any) => {
-  //           console.log(success);
-  //         },
-  //         error: (error: any) => {
-  //           console.log(error);
-  //         }
-  //       });
-  //     },
-  //     error: (error: any) => {
-  //       console.log(error);
-  //     }
-  //   });
-  // }
+  getUserDetails() {
+    zoomSdk.getUserContext().then((result) => {
+      this.userDetails = result;
+      // e.g. { screenName: 'Happy Zoomineer', role: 'host', participantId: "xxxx", participantUUID: "xxxx", status: "authorized"}
+    })
+    .catch(function(error){
+      console.log(error);
+      // there was an error
+    })  
+  }
 }
