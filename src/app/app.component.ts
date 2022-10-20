@@ -36,6 +36,7 @@ export class AppComponent {
   getSignature() {
     console.log("join meeting");
     this.configureApp();
+    this.getUserDetails();
     // this.startMeeting(this.signature);
   }
 
