@@ -12,6 +12,7 @@ export class AppComponent {
   value: any = "";
   userDetails: any = "";
   meetingDetails: any = "";
+  allParticipants: any = [];
   // currencies = { code: 'ALL', name: 'Albanian lek', symbol: 'L' }
   constructor() {}
 
@@ -30,9 +31,10 @@ export class AppComponent {
       });
       this.value=configResponse
       console.debug('Zoom JS SDK Configuration', configResponse);
-      
+      this.shareApp();
       this.getMeetingDetails();
       this.getUserDetails();
+      this.getAllParticipants();
     } catch (e) {
       this.value="error"
         console.error(e);
@@ -55,8 +57,15 @@ export class AppComponent {
       // there was an error
     })  
   }
+  async shareApp() {
+    await zoomSdk.shareApp({ action: "start" });
+  }
   async getMeetingDetails() {
     const meeting = await zoomSdk.getMeetingContext();
     this.meetingDetails = meeting;
+  }
+  async getAllParticipants() {
+    const allParticipants = await zoomSdk.getMeetingParticipants();
+    this.allParticipants = allParticipants;
   }
 }
