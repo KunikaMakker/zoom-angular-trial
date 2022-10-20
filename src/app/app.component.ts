@@ -10,6 +10,7 @@ import zoomSdk from "@zoom/appssdk"
 export class AppComponent {
   title = 'zoom-angular-trial';
   value: any = "";
+  currencies = { code: 'ALL', name: 'Albanian lek', symbol: 'L' }
   constructor() {}
 
   ngOnInit() {}

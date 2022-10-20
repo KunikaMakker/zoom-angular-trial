@@ -1,11 +1,11 @@
 <div>
     <h1>Zoom WebSDK Sample Angular</h1>
-    <a href="https://zoom.us/oauth/authorize?response_type=code&client_id=yoApSry_S02hZu1XIZwYZw&redirect_uri=http://localhost:4200/auth" target="_blank" rel="noopener noreferrer">
+    <!-- <a href="https://zoom.us/oauth/authorize?response_type=code&client_id=yoApSry_S02hZu1XIZwYZw&redirect_uri=http://localhost:4200/auth" target="_blank" rel="noopener noreferrer">
         <img src="https://marketplacecontent.zoom.us/zoom_marketplace/img/add_to_zoom.png" height="32" alt="Add to ZOOM" />
     </a>
-    <br/>
+    <br/> -->
     <button (click)="getSignature()">Join Meeting</button>
-
+    <div *ngFor="let x of value | keyvalue">{{x.key}}->{{x.value}}</div>
     {{value}}
 </div>
   
