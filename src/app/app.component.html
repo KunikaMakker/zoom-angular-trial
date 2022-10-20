@@ -9,7 +9,7 @@
     media
     <br/>
     <button (click)="getUserDetails()">User Details</button>
-     userDetails {{userDetails.length()}}
+     userDetails {{userDetails.length}}
     <div *ngFor="let x of userDetails | keyvalue">{{x.key}}->{{x.value}}</div>
 </div>
   

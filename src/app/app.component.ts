@@ -27,6 +27,8 @@ export class AppComponent {
       });
       this.value=configResponse
       console.debug('Zoom JS SDK Configuration', configResponse);
+      
+      this.getUserDetails();
     } catch (e) {
       this.value="error"
         console.error(e);
@@ -36,7 +38,6 @@ export class AppComponent {
   getSignature() {
     console.log("join meeting");
     this.configureApp();
-    this.getUserDetails();
     // this.startMeeting(this.signature);
   }
 
