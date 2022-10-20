@@ -33,7 +33,7 @@ export class AppComponent {
       console.debug('Zoom JS SDK Configuration', configResponse);
       this.shareApp();
       this.getMeetingDetails();
-      this.getUserDetails();
+      // this.getUserDetails();
       this.getAllParticipants();
     } catch (e) {
       this.value="error"
