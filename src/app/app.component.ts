@@ -9,7 +9,7 @@ import zoomSdk from "@zoom/appssdk"
 
 export class AppComponent {
   title = 'zoom-angular-trial';
-  value = "";
+  value: any = "";
   constructor() {}
 
   ngOnInit() {}
@@ -23,7 +23,7 @@ export class AppComponent {
               'shareApp',
           ],
       });
-      this.value="response"
+      this.value=configResponse
       console.debug('Zoom JS SDK Configuration', configResponse);
     } catch (e) {
       this.value="error"
