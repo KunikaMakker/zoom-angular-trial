@@ -31,7 +31,7 @@ export class AppComponent {
       });
       this.value=configResponse
       console.debug('Zoom JS SDK Configuration', configResponse);
-      this.shareApp();
+      // this.shareApp(); //screen share
       this.getMeetingDetails();
       // this.getUserDetails();
       this.getAllParticipants();

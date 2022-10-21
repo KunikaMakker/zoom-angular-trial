@@ -19,13 +19,12 @@
     ................................................................<br/>
     allParticipants
     <button (click)="getAllParticipants()">All Participants Details</button>
-    ----
-    <div *ngFor="let x of allParticipants[0] | keyvalue">{{x.key}}->{{x.value}}</div>
     <div *ngFor="let participant of allParticipants">
         <div *ngFor="let x of participant | keyvalue">{{x.key}}->{{x.value}}</div>
     </div>
     -----------------------------------------------------------------------------------
-    <div *ngFor="let x of allParticipants[1] | keyvalue">{{x.key}}->{{x.value}}</div>
-
+    <div *ngFor="let x of allParticipants[0]?.participants | keyvalue">{{x.key}}->{{x.value}}</div>
+    ...................................................................................
+    <div *ngFor="let x of allParticipants[1]?.participants | keyvalue">{{x.key}}->{{x.value}}</div>
 </div>
   
