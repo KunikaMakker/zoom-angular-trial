@@ -19,7 +19,7 @@
     ................................................................<br/>
     allParticipants
     <button (click)="getAllParticipants()">All Participants Details</button>
-    <div *ngFor="let participant of allParticipants">
+    <div *ngFor="let participant of allParticipants?.participants">
         <div *ngFor="let x of participant | keyvalue">{{x.key}}->{{x.value}}</div>
     </div>
     -----------------------------------------------------------------------------------
