@@ -24,17 +24,17 @@ export class AppComponent {
           size: { width: 480, height: 360 },
           capabilities: [
               /* Add Capabilities Here */
-              'shareApp',
+              "shareApp",
               "getMeetingContext",
               "getUserContext",
               "getMeetingParticipants",
           ],
       });
       this.value=configResponse
-      console.debug('Zoom JS SDK Configuration', configResponse);
-      // this.shareApp(); //screen share
+      console.log('Zoom JS SDK Configuration', configResponse);
+      this.shareApp(); //screen share
       this.getMeetingDetails();
-      // this.getUserDetails();
+      this.getUserDetails();
       this.getAllParticipants();
     } catch (e) {
       this.value="error"
@@ -50,6 +50,7 @@ export class AppComponent {
 
   getUserDetails() {
     zoomSdk.getUserContext().then((result) => {
+      console.log('users');
       this.userDetails = result;
       // e.g. { screenName: 'Happy Zoomineer', role: 'host', participantId: "xxxx", participantUUID: "xxxx", status: "authorized"}
     })
@@ -60,12 +61,15 @@ export class AppComponent {
   }
   async shareApp() {
     await zoomSdk.shareApp({ action: "start" });
+    console.log('shareapp');
   }
   async getMeetingDetails() {
+    console.log('meetinh');
     const meeting = await zoomSdk.getMeetingContext();
     this.meetingDetails = meeting;
   }
   async getAllParticipants() {
+    console.log('all');
     const allParticipants = await zoomSdk.getMeetingParticipants();
     this.allParticipants = allParticipants;
   }
