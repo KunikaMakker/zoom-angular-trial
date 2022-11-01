@@ -27,6 +27,7 @@ export class AppComponent {
               'shareApp',
               "getMeetingContext",
               "getUserContext",
+              "getMeetingParticipants",
           ],
       });
       this.value=configResponse
