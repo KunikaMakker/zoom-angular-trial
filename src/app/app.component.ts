@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import zoomSdk from "@zoom/appssdk"
 
 @Component({
@@ -7,7 +7,7 @@ import zoomSdk from "@zoom/appssdk"
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit, OnChanges{
   title = 'zoom-angular-trial';
   value: any = "";
   userDetails: any = "";
@@ -15,6 +15,12 @@ export class AppComponent {
   allParticipants: any = [];
   // currencies = { code: 'ALL', name: 'Albanian lek', symbol: 'L' }
   constructor() {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    zoomSdk.onParticipantChange((event: any) => {
+      console.log('participantchange',event)
+    });
+  }
 
   ngOnInit() {}
   
@@ -32,7 +38,7 @@ export class AppComponent {
       });
       this.value=configResponse
       console.log('Zoom JS SDK Configuration', configResponse);
-      this.shareApp(); //screen share
+      // this.shareApp(); //screen share
       this.getMeetingDetails();
       this.getUserDetails();
       this.getAllParticipants();
@@ -49,12 +55,12 @@ export class AppComponent {
   }
 
   getUserDetails() {
-    zoomSdk.getUserContext().then((result) => {
-      console.log('users');
+    zoomSdk.getUserContext().then((result: any) => {
+      console.log('users', result);
       this.userDetails = result;
       // e.g. { screenName: 'Happy Zoomineer', role: 'host', participantId: "xxxx", participantUUID: "xxxx", status: "authorized"}
     })
-    .catch(function(error){
+    .catch(function(error: any){
       console.log(error);
       // there was an error
     })  
@@ -64,13 +70,14 @@ export class AppComponent {
     console.log('shareapp');
   }
   async getMeetingDetails() {
-    console.log('meetinh');
     const meeting = await zoomSdk.getMeetingContext();
     this.meetingDetails = meeting;
+    console.log('meeting details', meeting);
   }
   async getAllParticipants() {
-    console.log('all');
     const allParticipants = await zoomSdk.getMeetingParticipants();
     this.allParticipants = allParticipants;
+    console.log('all', allParticipants);
   }
+  
 }
