@@ -30,7 +30,7 @@
     <br/>
     ................................................................<br/>
     New Participant
-    {{newParticipant?.timestamp}}
+    time : {{newParticipant?.timestamp}}
     <div *ngFor="let participant of newParticipant?.participants">
         <div *ngFor="let x of participant | keyvalue">{{x.key}}->{{x.value}}</div>
     </div>
