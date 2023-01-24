@@ -13,11 +13,13 @@ export class AppComponent implements OnInit, OnChanges{
   userDetails: any = "";
   meetingDetails: any = "";
   allParticipants: any = [];
+  newParticipant: any = [];
   // currencies = { code: 'ALL', name: 'Albanian lek', symbol: 'L' }
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     zoomSdk.onParticipantChange((event: any) => {
+      this.newParticipant = event;
       console.log('participantchange',event)
     });
   }
