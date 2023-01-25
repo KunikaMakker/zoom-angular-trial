@@ -48,7 +48,8 @@ export class AppComponent implements OnInit, OnChanges{
               "getMeetingContext",
               "getUserContext",
               "getMeetingParticipants",
-              "onParticipantChange"
+              "onParticipantChange",
+              "onMyUserContextChange",
           ],
       });
       this.value=configResponse
@@ -110,6 +111,10 @@ export class AppComponent implements OnInit, OnChanges{
 
     zoomSdk.addEventListener('onMyUserContextChange', (event) => {
       console.log('onMyUserContextChange', event);
+    });
+
+    zoomSdk.addEventListener('onParticipantChange', (event) => {
+      console.log('onParticipantChange',event)
     });
   }
 }
