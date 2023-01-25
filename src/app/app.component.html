@@ -22,13 +22,9 @@
     <div *ngFor="let participant of allParticipants?.participants">
         <div *ngFor="let x of participant | keyvalue">{{x.key}}->{{x.value}}</div>
     </div>
-    -----------------------------------------------------------------------------------
-    <div *ngFor="let x of allParticipants[0]?.participants | keyvalue">{{x.key}}->{{x.value}}</div>
-    ...................................................................................
-    <div *ngFor="let x of allParticipants[1]?.participants | keyvalue">{{x.key}}->{{x.value}}</div>
-
     <br/>
     ................................................................<br/>
+    <button (click)="setAuthenticationListeners()">check event()</button>
     New Participant
     time : {{newParticipant?.timestamp}}
     <div *ngFor="let participant of newParticipant?.participants">

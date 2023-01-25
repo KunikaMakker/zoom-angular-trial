@@ -24,7 +24,19 @@ export class AppComponent implements OnInit, OnChanges{
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.isRunningInZoom()) {
+      console.log("running in zoom")
+      this.getSignature();
+    }
+  }
+
+  isRunningInZoom() {
+    return (
+      typeof window !== 'undefined' &&
+      window.navigator.userAgent.includes('ZoomWebKit')
+    );
+  }
   
   async configureApp() {
     try {
@@ -36,6 +48,7 @@ export class AppComponent implements OnInit, OnChanges{
               "getMeetingContext",
               "getUserContext",
               "getMeetingParticipants",
+              "onParticipantChange"
           ],
       });
       this.value=configResponse
@@ -81,5 +94,22 @@ export class AppComponent implements OnInit, OnChanges{
     this.allParticipants = allParticipants;
     console.log('all', allParticipants);
   }
-  
+  setAuthenticationListeners() {
+    console.log('In-Client OAuth flow: onAuthorized event listener added');
+    zoomSdk.addEventListener('onAuthorized', (event) => {
+      const { code } = event;
+      console.log('3. onAuthorized event fired.');
+      console.log(
+        '3a. Here is the event passed to event listener callback, with code and state: ',
+        event
+      );
+      console.log(
+        '4. POST the code, state to backend to exchange server-side for a token.  Refer to backend logs now . . .'
+      );
+    });
+
+    zoomSdk.addEventListener('onMyUserContextChange', (event) => {
+      console.log('onMyUserContextChange', event);
+    });
+  }
 }
