@@ -118,7 +118,7 @@ export class AppComponent implements OnInit, OnChanges{
     });
   }
   testApi() {
-    fetch("https://internal-backendemployer.myamcat.com//usermanagement/index/getCountriesTimezone")
+    fetch("https://gorest.co.in/public/v2/users")
     .then(res => {
       console.log(res.json())
     })
