@@ -117,4 +117,13 @@ export class AppComponent implements OnInit, OnChanges{
       console.log('onParticipantChange',event)
     });
   }
+  testApi() {
+    fetch("https://internal-backendemployer.myamcat.com//usermanagement/index/getCountriesTimezone")
+    .then(res => {
+      console.log(res.json())
+    })
+    .catch(err => {
+      console.log('error', err);
+    })
+  }
 }
