@@ -118,7 +118,7 @@ export class AppComponent implements OnInit, OnChanges{
     });
   }
   testApi() {
-    fetch("https://gorest.co.in/public/v2/users")
+    fetch("https://vinay.myamcat.com/demo-api")
     .then(res => {
       console.log(res.json())
     })
