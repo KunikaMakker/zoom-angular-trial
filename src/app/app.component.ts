@@ -88,6 +88,7 @@ export class AppComponent implements OnInit, OnChanges{
       this.getMeetingDetails();
       this.getUserDetails();
       this.getAllParticipants();
+      this.getAppContextfnc();
     } catch (e) {
       this.value="error"
         console.error(e);
@@ -127,9 +128,19 @@ export class AppComponent implements OnInit, OnChanges{
   }
 
   async getAppContextfnc() {
-    zoomSdk.getAppContext()
-    .then((appContext) => console.log('appcontext',appContext))
-    .catch((err) => console.log(err))
+    const {context} = await zoomSdk.getAppContext();
+    console.log('ctx', {context});
+
+    let response = await fetch(`/auth/check`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({context})
+  })
+  let {hasAuth} = await response.json();
+
+  console.log('autg', response, 'flag', {hasAuth})
+
   }
 
   setAuthenticationListeners() {
@@ -155,7 +166,8 @@ export class AppComponent implements OnInit, OnChanges{
     });
   }
   testApi() {
-    fetch("https://vinay.myamcat.com/demo-api")
+    this.getAppContextfnc()
+    fetch("https://qa-live-interviews.shl.zone/zoom-auth")
     .then(res => {
       console.log(res.json())
     })
