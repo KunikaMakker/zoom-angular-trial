@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnChanges{
       window.navigator.userAgent.includes('ZoomWebKit')
     );
   }
-  
+
   async configureApp() {
     try {
       const configResponse = await zoomSdk.config({
@@ -109,7 +109,7 @@ export class AppComponent implements OnInit, OnChanges{
     .catch(function(error: any){
       console.log(error);
       // there was an error
-    })  
+    })
   }
   async shareApp() {
     await zoomSdk.shareApp({ action: "start" });
@@ -125,6 +125,13 @@ export class AppComponent implements OnInit, OnChanges{
     this.allParticipants = allParticipants;
     console.log('all', allParticipants);
   }
+
+  async getAppContextfnc() {
+    zoomSdk.getAppContext()
+    .then((appContext) => console.log('appcontext',appContext))
+    .catch((err) => console.log(err))
+  }
+
   setAuthenticationListeners() {
     console.log('In-Client OAuth flow: onAuthorized event listener added');
     zoomSdk.addEventListener('onAuthorized', (event) => {
