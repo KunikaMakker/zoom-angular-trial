@@ -160,7 +160,7 @@ export class AppComponent implements OnInit, OnChanges{
     zoomSdk.addEventListener('onMyUserContextChange', (event) => {
       console.log('onMyUserContextChange', event);
     });
-    //trial head change
+    //trial head change djhdh
 
     zoomSdk.addEventListener('onParticipantChange', (event) => {
       console.log('onParticipantChange',event)
